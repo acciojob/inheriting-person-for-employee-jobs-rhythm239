@@ -6,7 +6,7 @@ class Person {
     }
     
     greet() {
-        console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
+        console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
     }
 }
 
@@ -22,12 +22,6 @@ class Employee extends Person {
     }
 }
 
-// Example usage
-const person = new Person("Alice", 25);
-person.greet(); // Expected Output: Hello, my name is Alice, I am 25 years old.
-
-const employee = new Employee("Bob", 30, "Manager");
-employee.jobGreet(); // Expected Output: Hello, my name is Bob, I am 30 years old, and my job title is Manager.
-
-// Exporting classes for Cypress testing
-module.exports = { Person, Employee };
+// Making classes available in Cypress tests (browser global scope)
+window.Person = Person;
+window.Employee = Employee;
